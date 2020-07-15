@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomViewActivity">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.hurist.testapplication.view.ChartView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#F1DFC5" />
+
+        <com.hurist.testapplication.view.DoughnutView
+            android:id="@+id/doughnutView"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            app:intervalAngle="1"
+            app:minAngle="0"
+            app:startAngle="-90"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/btnNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="New"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.core.widget.NestedScrollView>

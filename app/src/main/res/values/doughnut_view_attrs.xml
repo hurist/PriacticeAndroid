@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DoughnutView">
+        <attr name="startAngle" format="float"/>
+        <attr name="intervalAngle" format="float"/>
+        <attr name="minAngle" format="float"/>
+    </declare-styleable>
+</resources>
