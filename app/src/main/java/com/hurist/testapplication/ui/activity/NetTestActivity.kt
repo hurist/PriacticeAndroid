@@ -1,10 +1,9 @@
-package com.hurist.testapplication
+package com.hurist.testapplication.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import com.hurist.testapplication.R
 import com.hurist.testapplication.base.BaseActivity
 import com.hurist.testapplication.viewmodel.NetTestViewModel
 import kotlinx.android.synthetic.main.activity_net_test.*

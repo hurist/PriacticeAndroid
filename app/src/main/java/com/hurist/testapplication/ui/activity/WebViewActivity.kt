@@ -1,11 +1,10 @@
-package com.hurist.testapplication
+package com.hurist.testapplication.ui.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.hurist.testapplication.extension.startActivity
+import com.hurist.testapplication.R
 import com.hurist.testapplication.util.WebClient
 import kotlinx.android.synthetic.main.activity_web_view.*
 

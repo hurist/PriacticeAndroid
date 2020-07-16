@@ -1,6 +1,5 @@
 package com.hurist.testapplication
 
-import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -12,9 +11,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import com.hurist.testapplication.base.BaseActivity
 import com.hurist.testapplication.extension.startActivity
+import com.hurist.testapplication.ui.activity.*
 import com.hurist.testapplication.util.*
 import com.hurist.testapplication.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -87,12 +86,13 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         btnToolbar.setOnClickListener(this::onClick)
         btnPopupMenu.setOnClickListener(this::onClick)
         btnActionMode.setOnClickListener(this::onClick)
+        btnAnimator.setOnClickListener(this::onClick)
         etNumber.filters = arrayOf(EditTextPointLengthFilter(4))
 
         lifecycle.addObserver(LifeCycleWatcher(this))
     }
 
-    private fun onClick(view: View) {
+    fun onClick(view: View) {
         when(view.id) {
             btnSetting.id    -> startActivity<SettingActivity>()
             btnBiometric.id  -> startActivity<BiometricActivity>()
@@ -101,6 +101,8 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             btnNetTest.id    -> startActivity<NetTestActivity>()
             btnNotify.id     -> startActivity<NotificationActivity>()
             btnToolbar.id    -> startActivity<ToolbarActivity>()
+            btnAnimator.id   -> startActivity<AnimatorActivity>()
+            btnService.id    -> startActivity<ServiceActivity>()
             btnPopup.id      -> popupWin.showAtLocation(view, Gravity.CENTER, 0, 0)
             btnDialog.id     -> dialog.show()
             add.id           -> viewModel.addNew()

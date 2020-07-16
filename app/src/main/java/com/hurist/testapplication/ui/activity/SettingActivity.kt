@@ -1,8 +1,8 @@
-package com.hurist.testapplication
+package com.hurist.testapplication.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
+import com.hurist.testapplication.R
 import com.hurist.testapplication.base.BaseActivity
 import com.hurist.testapplication.util.LifeCycleWatcher
 import kotlinx.android.synthetic.main.activity_setting.*

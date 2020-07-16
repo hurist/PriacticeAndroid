@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.hurist.testapplication.ui.activity.NetTestActivity">
+    tools:context="com.hurist.testapplication.ui.activity.AnimatorActivity">
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"/>
+        android:text="Start"/>
 
     <TextView
-        android:id="@+id/tvResult"
-        android:layout_width="match_parent"
+        android:id="@+id/tvObject"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"/>
+        android:text="TEXT"/>
 
 </LinearLayout>

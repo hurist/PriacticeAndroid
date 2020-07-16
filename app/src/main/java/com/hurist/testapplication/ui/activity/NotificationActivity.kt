@@ -1,4 +1,4 @@
-package com.hurist.testapplication
+package com.hurist.testapplication.ui.activity
 
 import android.app.*
 import android.content.*
@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.hurist.testapplication.MainActivity
+import com.hurist.testapplication.R
 import com.hurist.testapplication.receiver.NotifyBroadcastReceiver
 import kotlinx.android.synthetic.main.activity_notification.*
 
@@ -15,7 +17,8 @@ class NotificationActivity : AppCompatActivity() {
 
     private val channelId by lazy { packageName }
     private val action by lazy { "$packageName.notify" }
-    private val receiver = MyNotifyReceiver()
+    private val receiver =
+        MyNotifyReceiver()
 
     class MyNotifyReceiver :BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {

@@ -12,7 +12,7 @@
         app:flexDirection="row"
         app:flexWrap="wrap"
         app:justifyContent="space_around"
-        tools:context="com.hurist.testapplication.NotificationActivity">
+        tools:context="com.hurist.testapplication.ui.activity.NotificationActivity">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCreateChannel"

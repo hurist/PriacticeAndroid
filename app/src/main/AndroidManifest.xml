@@ -12,16 +12,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ToolbarActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".NotificationActivity"/>
-        <activity android:name=".NotificationActivity" />
-        <activity android:name=".NetTestActivity" />
-        <activity android:name=".BiometricActivity" />
-        <activity android:name=".WebViewActivity" />
-        <activity android:name=".MotionActivity" />
-        <activity android:name=".CustomViewActivity" />
-        <activity android:name=".SettingActivity" />
+        <activity android:name=".ui.activity.ServiceActivity"></activity>
+
+        <service
+            android:name=".service.MyIntentService"
+            android:exported="false" />
+        <service
+            android:name=".service.MyService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".ui.activity.AnimatorActivity" />
+        <activity
+            android:name=".ui.activity.ToolbarActivity"
+            android:parentActivityName=".ui.activity.NotificationActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.activity.NotificationActivity" />
+        <activity android:name=".ui.activity.NetTestActivity" />
+        <activity android:name=".ui.activity.BiometricActivity" />
+        <activity android:name=".ui.activity.WebViewActivity" />
+        <activity android:name=".ui.activity.MotionActivity" />
+        <activity android:name=".ui.activity.CustomViewActivity" />
+        <activity android:name=".ui.activity.SettingActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

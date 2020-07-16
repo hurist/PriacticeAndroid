@@ -1,10 +1,11 @@
-package com.hurist.testapplication
+package com.hurist.testapplication.ui.activity
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import com.hurist.testapplication.R
 import com.hurist.testapplication.base.BaseActivity
 import com.hurist.testapplication.util.toast
 import kotlinx.android.synthetic.main.activity_biometric.*

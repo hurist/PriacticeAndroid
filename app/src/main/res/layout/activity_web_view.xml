@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.hurist.testapplication.WebViewActivity">
+    tools:context="com.hurist.testapplication.ui.activity.WebViewActivity">
 
     <WebView
         android:id="@+id/webView"

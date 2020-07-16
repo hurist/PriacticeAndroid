@@ -1,14 +1,12 @@
-package com.hurist.testapplication
+package com.hurist.testapplication.ui.activity
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+import com.hurist.testapplication.R
 import com.hurist.testapplication.base.BaseActivity
 import com.hurist.testapplication.view.DoughnutEntry
 import com.hurist.testapplication.view.randomColor
 import kotlinx.android.synthetic.main.activity_custom_view.*
-import java.util.*
-import kotlin.random.Random
 
 class CustomViewActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

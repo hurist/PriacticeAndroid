@@ -1,6 +1,7 @@
-package com.hurist.testapplication
+package com.hurist.testapplication.ui.activity
 
 import android.os.Bundle
+import com.hurist.testapplication.R
 import com.hurist.testapplication.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_toolbar.*
 
