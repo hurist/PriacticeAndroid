@@ -38,6 +38,30 @@
             android:onClick="onClick"
             android:text="Foreground Service" />
 
+        <Button
+            android:id="@+id/btnBind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:onClick="onClick"
+            android:text="bind Service" />
+
+        <Button
+            android:id="@+id/btnUnbind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:onClick="onClick"
+            android:text="unbind Service" />
+
+        <Button
+            android:id="@+id/btnBindMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:onClick="onClick"
+            android:text="Bind by Messenger" />
+
     </com.google.android.flexbox.FlexboxLayout>
 
 </LinearLayout>

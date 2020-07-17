@@ -3,6 +3,7 @@
     package="com.hurist.testapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".TestApplication"
@@ -12,7 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.ServiceActivity"></activity>
+        <service
+            android:name=".service.AidlTestService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <service
+            android:name=".service.MessageService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".ui.activity.ServiceActivity" />
 
         <service
             android:name=".service.MyIntentService"
