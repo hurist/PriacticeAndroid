@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -123,6 +124,13 @@ dependencies {
     implementation 'androidx.biometric:biometric:1.0.1'
     //Websocket
     implementation 'com.tinder.scarlet:scarlet:0.1.9'
+    //https://github.com/JakeWharton/timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    //https://github.com/orhanobut/logger
+    implementation 'com.orhanobut:logger:2.2.0'
+    //https://github.com/permissions-dispatcher/PermissionsDispatcher
+    implementation "org.permissionsdispatcher:permissionsdispatcher:4.7.0"
+    kapt "org.permissionsdispatcher:permissionsdispatcher-processor:4.7.0"
 
 
 }

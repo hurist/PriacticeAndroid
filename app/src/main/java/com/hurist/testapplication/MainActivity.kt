@@ -103,6 +103,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             btnToolbar.id    -> startActivity<ToolbarActivity>()
             btnAnimator.id   -> startActivity<AnimatorActivity>()
             btnService.id    -> startActivity<ServiceActivity>()
+            btnFile.id       -> startActivity<FileActivity>()
             btnPopup.id      -> popupWin.showAtLocation(view, Gravity.CENTER, 0, 0)
             btnDialog.id     -> dialog.show()
             add.id           -> viewModel.addNew()

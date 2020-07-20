@@ -7,11 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import androidx.annotation.RequiresApi
 import com.hurist.testapplication.R
+import com.hurist.testapplication.base.BaseActivity
 import com.hurist.testapplication.receiver.NotifyBroadcastReceiver
 import com.hurist.testapplication.service.*
 import kotlinx.android.synthetic.main.activity_service.*
 
-class ServiceActivity : AppCompatActivity() {
+class ServiceActivity : BaseActivity() {
 
     private var isBind = false
     private val receiver = NotifyBroadcastReceiver()

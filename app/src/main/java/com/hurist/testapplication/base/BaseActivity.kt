@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import com.hurist.testapplication.R
+import com.hurist.testapplication.util.LifeCycleWatcher
 import com.zeugmasolutions.localehelper.LocaleHelperActivityDelegateImpl
 import java.util.*
 
@@ -31,6 +32,7 @@ open class BaseActivity: AppCompatActivity {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        lifecycle.addObserver(LifeCycleWatcher(this))
         localeDelegate.onCreate(this)
     }
 

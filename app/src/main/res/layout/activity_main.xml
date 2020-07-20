@@ -151,6 +151,14 @@
                 android:onClick="onClick"
                 android:text="service"/>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="onClick"
+                android:text="file"/>
+
         </com.google.android.flexbox.FlexboxLayout>
 
         <TextView

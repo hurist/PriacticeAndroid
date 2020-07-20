@@ -24,7 +24,5 @@ class SettingActivity : BaseActivity() {
         btnEnglish.setOnClickListener {
             updateLocale(Locale.ENGLISH)
         }
-
-        lifecycle.addObserver(LifeCycleWatcher(this))
     }
 }
