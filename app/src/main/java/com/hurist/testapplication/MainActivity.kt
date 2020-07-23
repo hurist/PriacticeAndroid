@@ -2,7 +2,13 @@ package com.hurist.testapplication
 
 import android.content.Context
 import android.content.Intent
+import android.database.Cursor
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
+import android.provider.OpenableColumns
 import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
@@ -17,6 +23,7 @@ import com.hurist.testapplication.ui.activity.*
 import com.hurist.testapplication.util.*
 import com.hurist.testapplication.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.*
 
 /**
  * author: spike
@@ -37,8 +44,21 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             create()
         }
     }
-    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        result.data?.data?.let { it1 -> dumpImageMetaData(it1) }
+        result.data?.data?.let { uri ->
+            var bitmap: Bitmap? = null
+            //解析uri，以流的方式读取文件
+            contentResolver.openFileDescriptor(uri, "r")?.use { parcelFileDescriptor ->
+                FileInputStream(parcelFileDescriptor.fileDescriptor).use {
+                    bitmap = BitmapFactory.decodeStream(it)
+                    ivResult.setImageBitmap(bitmap)
+                }
+            }
+            MediaStore.Images.Media.RELATIVE_PATH
+        }
+
+        Toast.makeText(this, result.toString(), Toast.LENGTH_SHORT).show()
     }
     private var actionMode: ActionMode? = null
     private val actionCallback = object: ActionMode.Callback2() {
@@ -115,9 +135,18 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             }
             btnImage.id      -> {
                 //判断权限
-                val intent = Intent("android.intent.action.GET_CONTENT")
+                val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
                 intent.type = "image/*"
                 launcher.launch(intent)
+            }
+            btnShare.id      -> {
+                val sendIntent: Intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
+                    type = "text/plain"
+                }
+                val shareIntent = Intent.createChooser(sendIntent, null)
+                startActivity(shareIntent)
             }
         }
     }
@@ -141,6 +170,44 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             Log.d(TAG, "onDestroy: 这是要重建了呀")
         }
         super.onDestroy()
+    }
+
+    private fun dumpImageMetaData(uri: Uri) {
+
+        // The query, because it only applies to a single document, returns only
+        // one row. There's no need to filter, sort, or select fields,
+        // because we want all fields for one document.
+        val cursor: Cursor? = contentResolver.query(
+            uri, null, null, null, null, null)
+
+        cursor?.use {
+            // moveToFirst() returns false if the cursor has 0 rows. Very handy for
+            // "if there's anything to look at, look at it" conditionals.
+            if (it.moveToFirst()) {
+
+                // Note it's called "Display Name". This is
+                // provider-specific, and might not necessarily be the file name.
+                val displayName: String =
+                    it.getString(it.getColumnIndex(OpenableColumns.DISPLAY_NAME))
+                Log.i(TAG, "Display Name: $displayName")
+
+                val sizeIndex: Int = it.getColumnIndex(OpenableColumns.SIZE)
+                // If the size is unknown, the value stored is null. But because an
+                // int can't be null, the behavior is implementation-specific,
+                // and unpredictable. So as
+                // a rule, check if it's null before assigning to an int. This will
+                // happen often: The storage API allows for remote files, whose
+                // size might not be locally known.
+                val size: String = if (!it.isNull(sizeIndex)) {
+                    // Technically the column stores an int, but cursor.getString()
+                    // will do the conversion automatically.
+                    it.getString(sizeIndex)
+                } else {
+                    "Unknown"
+                }
+                Log.i(TAG, "Size: $size")
+            }
+        }
     }
 
     companion object {

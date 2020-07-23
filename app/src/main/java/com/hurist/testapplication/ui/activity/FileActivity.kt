@@ -4,12 +4,10 @@ import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.os.Environment
+import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.os.EnvironmentCompat
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import com.hurist.testapplication.R
 import com.hurist.testapplication.base.BaseActivity
 import com.orhanobut.logger.Logger
@@ -18,7 +16,6 @@ import permissions.dispatcher.*
 import timber.log.Timber
 import java.io.File
 import java.io.FileOutputStream
-import kotlin.random.Random
 
 
 private const val FILE_NAME = "DATA"
@@ -39,6 +36,7 @@ class FileActivity : BaseActivity() {
                 }
             }
             R.id.btnRead -> {
+                getExternalStorageDirectory()
                 openFileInput(FILE_NAME).bufferedReader().use {
                     tvResult.text = it.readText()
                 }
@@ -60,10 +58,20 @@ class FileActivity : BaseActivity() {
                 getExternalStorageDirectory()
             }
             R.id.btnExternalFileCI -> {
-                createAndInsertFileWithPermissionCheck(File(getExternalFilesDir("MediaPhoto"), "ExternalFile.txt"))
+                createAndInsertFileWithPermissionCheck(
+                    File(
+                        getExternalFilesDir("MediaPhoto"),
+                        "ExternalFile.txt"
+                    )
+                )
             }
             R.id.btnExternalCacheFileCI -> {
-                createAndInsertFileWithPermissionCheck(File(externalCacheDir, "ExternalCacheFile.txt"))
+                createAndInsertFileWithPermissionCheck(
+                    File(
+                        externalCacheDir,
+                        "ExternalCacheFile.txt"
+                    )
+                )
             }
             R.id.btnExternalFileDelete -> {
                 File(getExternalFilesDir("MediaPhoto"), "ExternalFile.txt").delete()
@@ -71,7 +79,24 @@ class FileActivity : BaseActivity() {
             R.id.btnExternalCacheFileDelete -> {
                 File(externalCacheDir, "ExternalCacheFile.txt").delete()
             }
+            R.id.btnExternalMediaSave -> {
+                saveToMediaWithPermissionCheck()
+            }
         }
+    }
+
+    /**
+     * 存储到外置存储应用专属的媒体文件夹下，其实只是用[Environment.DIRECTORY_DOCUMENTS]来规范路径，这个目录不是
+     * 公共的
+     */
+    @NeedsPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    fun saveToMedia() {
+        val file = File(
+            getExternalFilesDir(
+                Environment.DIRECTORY_DOCUMENTS
+            ), "testDocument.text"
+        )
+        file.createNewFile()
     }
 
     @NeedsPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -128,7 +153,11 @@ class FileActivity : BaseActivity() {
         Toast.makeText(this, "读取文件权限被拒绝且不再显示", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         // NOTE: delegate the permission handling to generated function
         onRequestPermissionsResult(requestCode, grantResults)

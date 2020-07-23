@@ -99,6 +99,14 @@
             android:onClick="onClick"
             android:text="external cache file delete"/>
 
+        <Button
+            android:id="@+id/btnExternalMediaSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:onClick="onClick"
+            android:text="external media file save"/>
+
     </com.google.android.flexbox.FlexboxLayout>
 
 </LinearLayout>
