@@ -36,7 +36,6 @@ class FileActivity : BaseActivity() {
                 }
             }
             R.id.btnRead -> {
-                getExternalStorageDirectory()
                 openFileInput(FILE_NAME).bufferedReader().use {
                     tvResult.text = it.readText()
                 }

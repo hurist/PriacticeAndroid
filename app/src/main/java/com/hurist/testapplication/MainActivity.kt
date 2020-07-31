@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.OpenableColumns
+import android.text.InputFilter
 import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
@@ -107,7 +108,15 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         btnPopupMenu.setOnClickListener(this::onClick)
         btnActionMode.setOnClickListener(this::onClick)
         btnAnimator.setOnClickListener(this::onClick)
-        etNumber.filters = arrayOf(EditTextPointLengthFilter(4))
+
+        etInput.filters = arrayOf(InputFilter { source, start, end, dest, dstart, dend ->
+            if (source.toString() !in "0".."8") {
+                //返回空字符串表示删除本次输入
+                return@InputFilter ""
+            }
+            //返回Null表示接受本次改变
+            return@InputFilter null
+        })
 
         lifecycle.addObserver(LifeCycleWatcher(this))
     }
@@ -124,6 +133,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             btnAnimator.id   -> startActivity<AnimatorActivity>()
             btnService.id    -> startActivity<ServiceActivity>()
             btnFile.id       -> startActivity<FileActivity>()
+            btnList.id       -> startActivity<MainListActivity>()
             btnPopup.id      -> popupWin.showAtLocation(view, Gravity.CENTER, 0, 0)
             btnDialog.id     -> dialog.show()
             add.id           -> viewModel.addNew()

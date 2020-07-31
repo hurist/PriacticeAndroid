@@ -37,12 +37,10 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/etNumber"
+            android:id="@+id/etInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:inputType="numberSigned|numberDecimal"
-            android:text="PopupWindow" />
+            android:layout_centerInParent="true" />
 
 
         <com.google.android.flexbox.FlexboxLayout
@@ -166,6 +164,14 @@
                 android:layout_gravity="center"
                 android:onClick="onClick"
                 android:text="share"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="onClick"
+                android:text="list"/>
 
         </com.google.android.flexbox.FlexboxLayout>
 
