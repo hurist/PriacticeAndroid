@@ -5,6 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import androidx.annotation.ColorInt
 import androidx.core.graphics.toRectF
 import com.hurist.testapplication.R
 
@@ -82,7 +83,7 @@ class DoughnutView(context: Context, attributeSet: AttributeSet) : View(context,
      * 将扇形的角度和颜色匹配，为绘制提供数值
      */
     private fun getAngleAndColors(): MutableList<Pair<Float, Int>> {
-        val angleAndColors = mutableListOf<Pair<Float, Int>>()
+        val angleAndColors = mutableListOf<Pair<Float, @ColorInt Int>>()
         val values = datas.map { it.value }
         val angles = calcAngles(values)
         for (i in calcAngles(values).indices) {

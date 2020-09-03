@@ -28,7 +28,7 @@ class CustomViewActivity : BaseActivity() {
             )
             datas.add(entry)
         }
-        Log.d(TAG, "generateData: angles $datas")
+        Log.d(tag, "generateData: angles $datas")
         return datas
     }
 }

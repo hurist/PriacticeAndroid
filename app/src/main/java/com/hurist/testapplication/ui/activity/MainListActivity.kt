@@ -10,7 +10,12 @@ import kotlinx.android.synthetic.main.activity_toolbar.*
 class MainListActivity : BaseActivity() {
 
     private val datas = listOf(
-        Pair("CardView", CardViewActivity::class.java)
+        "CardView" to CardViewActivity::class.java,
+        "BezierView" to BezierActivity::class.java,
+        "BezierView1" to BezierViewActivity::class.java,
+        "LineChart" to MyLineChartActivity::class.java,
+        "Window" to WindowActivity::class.java,
+        "NotFindActivity" to NotFindTestActivity::class.java,
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -20,7 +20,7 @@ class ExampleUnitTest {
     @Test
     fun random() {
         repeat(10) {
-            println(Random.nextInt(10))
+            println(Random.nextFloat() * 100)
         }
     }
 

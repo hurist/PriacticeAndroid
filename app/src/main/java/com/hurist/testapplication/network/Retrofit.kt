@@ -1,14 +1,12 @@
-package com.hurist.wanandroid.data
+package com.hurist.testapplication.network
 
-import android.util.Log
 import android.util.Log.DEBUG
-import android.util.Log.VERBOSE
 import com.hurist.testapplication.network.service.WanAndroid
 import com.ihsanbal.logging.Level
-import com.ihsanbal.logging.Logger
 import com.ihsanbal.logging.LoggingInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object Retrofit {
@@ -29,6 +27,6 @@ object Retrofit {
             .build()
     }
 
-    val wanAndroid = retrofit.create(WanAndroid::class.java)
+    val wanAndroid: WanAndroid = retrofit.create(WanAndroid::class.java)
 
 }

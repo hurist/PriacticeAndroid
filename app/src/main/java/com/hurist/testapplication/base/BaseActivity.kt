@@ -12,7 +12,7 @@ import java.util.*
 
 open class BaseActivity: AppCompatActivity {
 
-    val TAG = this::class.simpleName
+    val tag = this::class.simpleName
 
     constructor() : super()
 

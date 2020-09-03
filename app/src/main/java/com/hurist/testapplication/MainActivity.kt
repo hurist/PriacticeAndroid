@@ -1,5 +1,6 @@
 package com.hurist.testapplication
 
+import android.app.IntentService
 import android.content.Context
 import android.content.Intent
 import android.database.Cursor
@@ -173,11 +174,11 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 
     override fun onDestroy() {
         if (isFinishing) {
-            Log.d(TAG, "onDestroy: 这是要销毁了呀")
+            Log.d(tag, "onDestroy: 这是要销毁了呀")
             Toast.makeText(this, "这是要销毁了呀", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(this, "这是要重建了呀", Toast.LENGTH_SHORT).show()
-            Log.d(TAG, "onDestroy: 这是要重建了呀")
+            Log.d(tag, "onDestroy: 这是要重建了呀")
         }
         super.onDestroy()
     }
@@ -199,7 +200,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
                 // provider-specific, and might not necessarily be the file name.
                 val displayName: String =
                     it.getString(it.getColumnIndex(OpenableColumns.DISPLAY_NAME))
-                Log.i(TAG, "Display Name: $displayName")
+                Log.i(tag, "Display Name: $displayName")
 
                 val sizeIndex: Int = it.getColumnIndex(OpenableColumns.SIZE)
                 // If the size is unknown, the value stored is null. But because an
@@ -215,7 +216,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
                 } else {
                     "Unknown"
                 }
-                Log.i(TAG, "Size: $size")
+                Log.i(tag, "Size: $size")
             }
         }
     }

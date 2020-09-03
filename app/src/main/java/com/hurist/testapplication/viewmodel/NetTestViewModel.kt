@@ -1,7 +1,7 @@
 package com.hurist.testapplication.viewmodel
 
 import androidx.lifecycle.*
-import com.hurist.wanandroid.data.Retrofit
+import com.hurist.testapplication.network.Retrofit
 import com.hurist.wanandroid.data.responseData.UserInfo
 import kotlinx.coroutines.launch
 import retrofit2.Response
